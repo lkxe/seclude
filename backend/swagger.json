@@ -1,0 +1,134 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/hello": {
+      "get": {
+        "summary": "Get a hello message.",
+        "operationId": "hello",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/helloResponse"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login to the application.",
+        "operationId": "login",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/loginResponse"
+          },
+          "400": {
+            "$ref": "#/responses/errorResponse"
+          }
+        }
+      }
+    },
+    "/notes": {
+      "get": {
+        "tags": [
+          "notes"
+        ],
+        "summary": "List all notes for the authenticated user.",
+        "operationId": "listNotes",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/notesResponse"
+          },
+          "401": {
+            "$ref": "#/responses/errorResponse"
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "summary": "Register a new user.",
+        "operationId": "register",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/registerResponse"
+          },
+          "400": {
+            "$ref": "#/responses/errorResponse"
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "errorResponse": {
+      "description": "",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "x-go-name": "Message"
+          }
+        }
+      }
+    },
+    "helloResponse": {
+      "description": "",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "x-go-name": "Message"
+          }
+        }
+      }
+    },
+    "loginResponse": {
+      "description": "",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "x-go-name": "Token"
+          }
+        }
+      }
+    },
+    "notesResponse": {
+      "description": "",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "x-go-name": "ID"
+            },
+            "text": {
+              "type": "string",
+              "x-go-name": "Text"
+            }
+          }
+        }
+      }
+    },
+    "registerResponse": {
+      "description": "",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "x-go-name": "Message"
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "version": "1",
+    "title": "Seclude"
+  }
+}
